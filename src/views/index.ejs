@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>formulario de color</title>
+</head>
+
+
+<body>
+    <main>
+        <% if (locals.user) { %>
+            <style>
+              body{
+                background-color: <%= locals.user.color %>;
+              }
+            </style>
+            <h1>Hola <%= locals.user.name %> </h1>
+            <p>Tu color es el seleccionado en la siguiente pagina <%= locals.user.color %> </p>
+            <p>Tu email es: <%= locals.user.email %> </p>
+            <p>Y tu edad es: <%= locals.user.age = !undefined ? locals.user.age + " Años" : "No lo indicaste" %> </p>
+            <a href="/profile">terminar</a>
+            
+         <% } else { %> 
+    <h3 class="userTitle">Mostra tu color</h3>
+<form action="/" method="post" class="form-color">
+        <div>
+            <label for="name">Ingresa tu nombre</label>
+            <input type="text" name="name" >
+            <span><%= locals.errors && errors.name ? errors.name.msg : null %> </span>
+        </div>    
+        <div class="fondo-color">
+            <label for="color">Elije tu color </label>
+            <input type="color" name="color" >
+            <span><%= locals.errors && errors.color ? errors.color.msg : null %> </span>
+        </div>
+        <div class="fondo-color">
+            <label for="email">Ingresa tu email</label>
+            <input type="email" name="email">
+            <span><%= locals.errors && errors.email ? errors.email.msg : null %> </span>
+        </div>  
+        <div class="fondo-color">
+            <label for="age">edad</label>
+            <input type="number" name="age" >
+        </div>  
+        <label for="recordar">recordar color</label>
+        <input type="checkbox" value="recordar color">
+        <input type="submit" placeholder="Enviar">
+        <% } %>
+    </form>
+    </main>
+</body>
+</html>
+
+
+
+
